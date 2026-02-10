@@ -1,0 +1,3 @@
+# Ignore the stuff
+env/
+tests/examples
