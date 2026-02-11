@@ -1,1 +1,1 @@
-from source.pack_loader import yaml_loader
+from source.pack_loader._yaml_loader import load_map_yaml

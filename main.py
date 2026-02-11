@@ -1,9 +1,11 @@
-from source.pack_loader import yaml_loader
-from source.window_manager import window_manager
+from source.pack_loader import load_map_yaml
+from source.window_manager import Window
 
-window_manager.create_window()
+window = Window(1280, 640, "Really? Another Tracker?", 50)
 
-test = yaml_loader.load_map_yaml("./packs/Test-Pack-0.0.1/data/maps/hollow_basin.yaml")
+window.create_window()
+
+test = load_map_yaml("./packs/Test-Pack-0.0.1/data/maps/hollow_basin.yaml")
 print(test.name)
 
-window_manager.main_loop()
+window.main_loop([], [])

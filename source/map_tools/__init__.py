@@ -1,1 +1,1 @@
-from source.map_tools import map_builder
+from source.map_tools._map_builder import Map
