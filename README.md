@@ -6,8 +6,6 @@
 
 <img src="./git_resources/images/RATLogoV2.png" width="128" height="128">
 
----
-
 ## $\color{goldenrod}{So\ What\ Is\ RAT?}$
 
 RAT is an idea I've had for a while. The problem I have with other trackers is that there's usually
@@ -18,8 +16,9 @@ entrances and exits. This would allow players to at a glance gain a better grasp
 how to get to where they want to go. Along with the core focus of Entrance/Exit tracking, RAT also 
 provides Item tracking and the ability to hide aspects of the GUI to allow players to focus on what
 they want without having a cluttered screen.
+___
 
-## $\color{goldenrod}{Features}$
+## $\color{goldenrod}{Planned\ Features}$
 
 - [ ] $\color{skyblue}{Zoom,\ pan\ and\ infinte\ Grid\ for\ placing\ maps}$
 - [ ] $\color{skyblue}{Drag\ to\ place\ and\ move\ maps}$
@@ -28,3 +27,4 @@ they want without having a cluttered screen.
 - [ ] $\color{skyblue}{Entrance/Exit\ Linking}$
 - [ ] $\color{skyblue}{Item\ Tracking}$
 - [ ] $\color{skyblue}{Custom\ Logic\ Rules}$
+___
