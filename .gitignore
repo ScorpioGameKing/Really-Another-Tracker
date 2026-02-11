@@ -1,3 +1,5 @@
 # Ignore the stuff
 env/
 tests/examples
+**/__pycache__
+packs/**
