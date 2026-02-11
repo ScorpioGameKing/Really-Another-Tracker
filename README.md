@@ -1,10 +1,10 @@
-# $\color{goldenrod}{Really?\ Another\ Tracker?\ (RAT)}$
+# $\color{goldenrod}{\textbf{Really?\ Another\ Tracker?\ (RAT)}}$
 
  *Just another map tracker with a core focus of making entrance randomization runs easier to route.*
 
 ---
 
-<img src="./git_resources/images/RATLogoV2.png" width="128" height="128">
+<p align="center"><img src="./git_resources/images/RATLogoV2.png" width="128" height="128"></p>
 
 ## $\color{goldenrod}{So\ What\ Is\ RAT?}$
 
@@ -18,7 +18,7 @@ provides Item tracking and the ability to hide aspects of the GUI to allow playe
 they want without having a cluttered screen.
 ___
 
-## $\color{goldenrod}{Planned\ Features}$
+## $\color{goldenrod}{\textsf{Planned\ Features}}$
 
 - [ ] $\color{skyblue}{Zoom,\ pan\ and\ infinte\ Grid\ for\ placing\ maps}$
 - [ ] $\color{skyblue}{Drag\ to\ place\ and\ move\ maps}$
