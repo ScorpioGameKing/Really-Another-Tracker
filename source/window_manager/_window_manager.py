@@ -44,6 +44,7 @@ class Window():
             begin_mode_2d(self.camera.camera)
 
             draw_scaling_grid([self.width, self.height], 16, 0, self.grid_scale)
+            
             self.camera.update()
 
             for update in updates:
