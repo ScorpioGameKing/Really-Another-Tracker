@@ -18,3 +18,4 @@ class Location():
         self.name = location_data["name"]
         self.rules = location_data["rules"]
         self.items = iterate_items(location_data["items"])
+        #print("LOCATION:", self.name)

@@ -35,9 +35,9 @@ class Camera():
                 self.zoom_scale = self.zoom_scale / 2
                 self.camera.zoom -= self.zoom_scale
         
-        if is_mouse_button_pressed(0):
+        if is_mouse_button_pressed(2):
             self.mouse_previous = get_mouse_position()
-        if is_mouse_button_down(0):
+        if is_mouse_button_down(2):
             self.camera.target = Vector2(
                 self.camera.target.x + ((self.mouse_previous.x - get_mouse_position().x) / self.camera.zoom),
                 self.camera.target.y + ((self.mouse_previous.y - get_mouse_position().y) / self.camera.zoom))
