@@ -46,7 +46,7 @@ class Window():
 
         # TODO: Add a more dynamic method of adding and removing interfaces
         # Add the GUI interfaces once and update/render in main
-        self.gui.add_interface(SlidingBox("Maps", -280, 72, 240, 540, 20, True))
+        self.gui.add_interface(SlidingBox("Maps", 20, 72, 240, 540, True))
 
     def main_loop(self, *updates:list, **renders:list):
         while not window_should_close():
