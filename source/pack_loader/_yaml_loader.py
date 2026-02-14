@@ -19,4 +19,4 @@ class YAMLLoader():
     
     def build_map_objects(self):
         for loaded_map in self.loaded_maps:
-            self.built_maps.update({loaded_map:GUIMap(self.loaded_maps[loaded_map], 10,25,20,20)})
+            self.built_maps.update({loaded_map:GUIMap(self.loaded_maps[loaded_map], 10,25,20,10)})
