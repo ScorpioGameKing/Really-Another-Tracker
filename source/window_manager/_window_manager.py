@@ -48,11 +48,17 @@ class Window():
         # Add the GUI interfaces once and update/render in main
         self.gui.add_interface(SlidingBox("Maps", 20, 72, 240, 540, True))
 
+    def update_maps_panel(self, built_maps):
+        for built_map in built_maps:
+            print(built_maps[built_map])
+            self.gui.interfaces["Maps"].add_child(built_maps[built_map])
+
     def main_loop(self, *updates:list, **renders:list):
         while not window_should_close():
             
             # Update everything before the render
             self.camera.update()
+            self.gui.update()
 
             # Start the render loop with a blank BG
             begin_drawing()
