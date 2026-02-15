@@ -13,4 +13,4 @@ class Map():
         self.image = yaml_data["image"]
         self.rules = yaml_data["rules"]
         self.locations = iterate_locations(yaml_data["locations"])
-        #print("MAP:", self.name)
+        print("Created MAP:", self.name)

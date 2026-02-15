@@ -11,6 +11,7 @@ class YAMLLoader():
         self.built_maps = {}
 
     def load_map_yaml(self, path:str):
+        print(f"Loading Pack YAML from {path}")
         with open(path) as yaml_map:
             map_data = safe_load(yaml_map)
         
@@ -19,4 +20,4 @@ class YAMLLoader():
     
     def build_map_objects(self):
         for loaded_map in self.loaded_maps:
-            self.built_maps.update({loaded_map:GUIMap(self.loaded_maps[loaded_map], 10,25,20,10)})
+            self.built_maps.update({loaded_map:GUIMap(self.loaded_maps[loaded_map], 10,28,20,12)})
