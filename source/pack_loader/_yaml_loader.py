@@ -1,5 +1,6 @@
 from yaml import safe_load
-from source.map_tools import Map, GUIMap
+from source.map_tools import Map
+from source.gui_manager.interfaces import GUIMap
 
 class YAMLLoader():
 

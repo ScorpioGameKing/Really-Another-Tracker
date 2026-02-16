@@ -14,8 +14,8 @@ from pyray import (
 
 from source.window_manager._scaling_grid import draw_scaling_grid
 from source.window_manager._camera import Camera
-from source.window_manager._slidingbox import SlidingBox
-from source.window_manager._gui_manager import GUIManager
+from source.gui_manager import GUIManager
+from source.gui_manager.interfaces import MapPanel
 
 class Window():
 
@@ -46,7 +46,9 @@ class Window():
 
         # TODO: Add a more dynamic method of adding and removing interfaces
         # Add the GUI interfaces once and update/render in main
-        self.gui.add_interface(SlidingBox("Maps", 20, 72, 240, 540, True))
+        
+        #self.gui.add_interface(SlidingBox("Maps", 20, 72, 240, 540, True, "right"))
+        self.gui.add_interface(MapPanel(20, 72, 240, 540, True))
 
     def update_maps_panel(self, built_maps):
         for built_map in built_maps:

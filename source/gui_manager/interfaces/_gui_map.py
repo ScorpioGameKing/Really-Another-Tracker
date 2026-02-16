@@ -1,5 +1,5 @@
 from pyray import gui_panel, Rectangle, gui_check_box, ffi, gui_button
-from source.map_tools._map_builder import Map
+from source.map_tools import Map
 
 class GUIMap():
 

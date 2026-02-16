@@ -9,11 +9,12 @@ class SlidingBox():
     w: int
     h: int
     visible: bool
+    slide_direction: str
     location: Rectangle
     panel: gui_panel
     children: dict
 
-    def __init__(self, title, x, y, w, h, visible):
+    def __init__(self, title, x, y, w, h, visible, slide_direction):
         self.title = title
         self.x = x
         self.y = y
@@ -21,6 +22,7 @@ class SlidingBox():
         self.h = h
         self.min_x = 0 - self.x - self.w
         self.visible = visible
+        self.slide_direction = slide_direction
         self.location = Rectangle(self.min_x, self.y, self.w, self.h)
         self.panel = gui_panel(self.location, self.title)
         self.children = {}
@@ -30,12 +32,21 @@ class SlidingBox():
         self.children.update({child.name:child})
 
     def update(self):
-        if self.visible and self.location.x != self.x:
-            self.location.x += 1
-        elif not self.visible and self.location.x != self.min_x:
-            self.location.x -= 1
-        for child in self.children:
-            self.children[child].update(self.location)
+        match self.slide_direction:
+            case "right":
+                if self.visible and self.location.x != self.x:
+                    self.location.x += 1
+                elif not self.visible and self.location.x != self.min_x:
+                    self.location.x -= 1
+                # Does this need to be a part of base or per basis in the inheriting classes?
+                for child in self.children:
+                    self.children[child].update(self.location)
+            case "left":
+                print("Slide from left")
+            case "top":
+                print("Slide from top")
+            case "Bottom":
+                print("Slide from bottom")
 
     def render(self):
         self.panel = gui_panel(self.location, self.title)
