@@ -52,10 +52,9 @@ class Window():
 
     def update_maps_panel(self, built_maps):
         for built_map in built_maps:
-            print(built_maps[built_map])
             self.gui.interfaces["Maps"].add_child(built_maps[built_map])
 
-    def main_loop(self, *updates:list, **renders:list):
+    def main_loop(self):
         while not window_should_close():
             
             # Update everything before the render

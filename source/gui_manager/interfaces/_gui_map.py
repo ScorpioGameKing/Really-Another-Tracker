@@ -31,7 +31,7 @@ class GUIMap():
             self.panel_location.y + 25, 100, 20)
         self.label = gui_panel(self.panel_location, self.name)
         self.map_enabled = ffi.new('bool *', False)
-        print(f"Created GUIMap: {self.name}")
+        #print(f"Created GUIMap: {self.name}")
     
     def update(self, parent_location):
         self.panel_location = Rectangle(parent_location.x + self.x_in,
