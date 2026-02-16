@@ -48,7 +48,7 @@ class Window():
         # Add the GUI interfaces once and update/render in main
         
         #self.gui.add_interface(SlidingBox("Maps", 20, 72, 240, 540, True, "right"))
-        self.gui.add_interface(MapPanel(20, 72, 240, 540, True))
+        self.gui.add_interface(MapPanel(20, 72, 260, 540, True))
 
     def update_maps_panel(self, built_maps):
         for built_map in built_maps:
