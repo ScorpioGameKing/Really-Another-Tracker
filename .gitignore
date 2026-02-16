@@ -1,5 +1,6 @@
 # Ignore the stuff
 env/
 tests/examples
+.vscode/
 **/__pycache__
 packs/**
