@@ -28,7 +28,7 @@ class SlidingBox():
         self.location = Rectangle(self.min_x, self.y, self.w, self.h)
         self.content = Rectangle(0, 0, self.w, self.h*2)
         self.scroll = Vector2(0,0)
-        self.view = Rectangle()
+        self.view = Rectangle(0,0,0,0)
         self.children = {}
         #self.panel = gui_panel(self.location, self.title)
         self.panel = gui_scroll_panel(self.location, self.title, self.content, self.scroll, self.view)

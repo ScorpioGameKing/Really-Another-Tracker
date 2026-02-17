@@ -33,9 +33,9 @@ class GUIMap():
         self.map_enabled = ffi.new('bool *', False)
         #print(f"Created GUIMap: {self.name}")
     
-    def update(self, parent_location):
-        self.panel_location = Rectangle(parent_location.x + self.x_in,
-            parent_location.y + self.y_in, 
+    def update(self, parent_location, scroll):
+        self.panel_location = Rectangle(parent_location.x + self.x_in + scroll.x,
+            parent_location.y + self.y_in + scroll.y, 
             parent_location.width - self.w_in,
             self.h)
         self.check_location = Rectangle(self.panel_location.x + 5, 

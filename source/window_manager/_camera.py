@@ -21,19 +21,20 @@ class Camera():
         self.camera = Camera2D(self.offset, self.target, 0.0, zstart)
         self.mouse_previous = Vector2(0.0, 0.0)
     
-    def update(self):
-        if get_mouse_wheel_move() > 0:
-            if self.zoom_scale != 1:
-                self.camera.zoom += self.zoom_scale
-                self.zoom_scale *= 2
-            elif self.camera.zoom - self.zoom_scale < self.zoom_max:
-                self.camera.zoom += self.zoom_scale
-        elif get_mouse_wheel_move() < 0:
-            if self.camera.zoom - self.zoom_scale > self.zoom_min:
-                self.camera.zoom -= self.zoom_scale
-            elif self.zoom_scale / 2 > self.zoom_scale_min:
-                self.zoom_scale = self.zoom_scale / 2
-                self.camera.zoom -= self.zoom_scale
+    def update(self, in_gui):
+        if not in_gui:
+            if get_mouse_wheel_move() > 0:
+                if self.zoom_scale != 1:
+                    self.camera.zoom += self.zoom_scale
+                    self.zoom_scale *= 2
+                elif self.camera.zoom - self.zoom_scale < self.zoom_max:
+                    self.camera.zoom += self.zoom_scale
+            elif get_mouse_wheel_move() < 0:
+                if self.camera.zoom - self.zoom_scale > self.zoom_min:
+                    self.camera.zoom -= self.zoom_scale
+                elif self.zoom_scale / 2 > self.zoom_scale_min:
+                    self.zoom_scale = self.zoom_scale / 2
+                    self.camera.zoom -= self.zoom_scale
         
         if is_mouse_button_pressed(2):
             self.mouse_previous = get_mouse_position()

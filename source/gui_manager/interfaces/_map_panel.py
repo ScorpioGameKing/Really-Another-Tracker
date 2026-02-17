@@ -1,3 +1,4 @@
+from pyray import begin_scissor_mode, end_scissor_mode, Rectangle
 from source.gui_manager.interfaces.base import SlidingBox
 
 class MapPanel(SlidingBox):
@@ -9,9 +10,14 @@ class MapPanel(SlidingBox):
         super().update()
         # Does this need to be a part of base or per basis in the inheriting classes?
         for child in self.children:
-            self.children[child].update(self.location)
+            self.children[child].update(self.location, self.scroll)
         
     def render(self):
         super().render()
+        begin_scissor_mode(int(self.view.x),
+            int(self.view.y),
+            int(self.view.width), 
+            int(self.view.height))
         for child in self.children:
             self.children[child].render()
+        end_scissor_mode()

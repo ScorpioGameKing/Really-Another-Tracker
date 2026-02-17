@@ -14,6 +14,7 @@ from pyray import (
 
 from source.window_manager._scaling_grid import draw_scaling_grid
 from source.window_manager._camera import Camera
+from source.window_manager._mouse_controls import MouseController
 from source.gui_manager import GUIManager
 from source.gui_manager.interfaces import MapPanel
 
@@ -24,6 +25,7 @@ class Window():
     title: str
     grid_scale: int
     camera: Camera
+    mouse_controls: MouseController
     gui: GUIManager
 
     def __init__(self, width, height, title, grid_scale):
@@ -38,6 +40,8 @@ class Window():
             [self.width / 2, self.height / 2],
             [self.width * self.grid_scale / 2, self.height * self.grid_scale / 2],
             0, 12, 1, 0.125, 3.0)
+        
+        self.mouse_controls = MouseController()
 
     def create_window(self):
         # Make the window resizeable BEFORE creation
@@ -58,8 +62,9 @@ class Window():
         while not window_should_close():
             
             # Update everything before the render
-            self.camera.update()
             self.gui.update()
+            self.mouse_controls.update(self.gui.interfaces)
+            self.camera.update(self.mouse_controls.in_gui)
 
             # Start the render loop with a blank BG
             begin_drawing()
