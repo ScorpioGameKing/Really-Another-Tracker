@@ -21,6 +21,7 @@ class VisualMap():
         element_manager.add_element(self)
         print(self.map_location.x, self.map_location.y, self.map_location.width, self.map_location.height)
     
+    # For Debug reasons, can be removed later
     def render(self):
         if self.visible:
             draw_texture_v(self.map_image, self.map_position, WHITE)

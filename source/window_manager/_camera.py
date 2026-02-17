@@ -1,4 +1,4 @@
-from pyray import Camera2D, get_mouse_wheel_move, Vector2, get_mouse_position, is_mouse_button_down, is_mouse_button_pressed
+from pyray import Camera2D, get_mouse_wheel_move, Vector2, get_mouse_position, is_mouse_button_down, is_mouse_button_pressed, draw_circle, BLUE
 
 class Camera():
 
@@ -10,6 +10,7 @@ class Camera():
     zoom_scale_min: int
     camera: Camera2D
     mouse_previous: Vector2
+    camera_corner: Vector2
 
     def __init__(self, offset, target, zmin, zmax, zscale, zscalemin, zstart):
         self.offset = offset
@@ -20,6 +21,7 @@ class Camera():
         self.zoom_scale_min = zscalemin
         self.camera = Camera2D(self.offset, self.target, 0.0, zstart)
         self.mouse_previous = Vector2(0.0, 0.0)
+        self.camera_corner = Vector2(self.target.x - (self.offset.x / zstart), self.target.y - (self.offset.y / zstart))
     
     def update(self, in_gui):
         if not in_gui:
@@ -43,3 +45,8 @@ class Camera():
                 self.camera.target.x + ((self.mouse_previous.x - get_mouse_position().x) / self.camera.zoom),
                 self.camera.target.y + ((self.mouse_previous.y - get_mouse_position().y) / self.camera.zoom))
             self.mouse_previous = get_mouse_position()
+        
+        self.camera_corner = Vector2(self.camera.target.x - (self.camera.offset.x / self.camera.zoom), self.camera.target.y - (self.camera.offset.y / self.camera.zoom))
+        
+    def render(self):
+        draw_circle(int(self.camera_corner.x), int(self.camera_corner.y), 20.0, BLUE)

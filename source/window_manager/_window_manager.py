@@ -77,6 +77,8 @@ class Window():
             begin_mode_2d(self.camera.camera)
             draw_scaling_grid([self.width, self.height], 16, 0, self.grid_scale)
             self.elements_manager.render()
+            self.camera.render()
+            self.mouse_controls.render(self.camera)
             end_mode_2d()
             
             # Draw the GUI last to ensure it's on top
