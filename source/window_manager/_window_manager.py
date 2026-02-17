@@ -12,7 +12,7 @@ from pyray import (
     end_mode_2d
 )
 
-from source.window_manager._scaling_grid import draw_scaling_grid
+from source.visual_elements import draw_scaling_grid
 from source.window_manager._camera import Camera
 from source.window_manager._mouse_controls import MouseController
 from source.gui_manager import GUIManager

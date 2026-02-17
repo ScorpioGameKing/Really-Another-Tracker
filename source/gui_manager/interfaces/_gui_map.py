@@ -1,9 +1,11 @@
 from pyray import gui_panel, Rectangle, gui_check_box, ffi, gui_button
 from source.map_tools import Map
+from source.visual_elements import VisualMap
 
 class GUIMap():
 
     map_data: Map
+    visual_map: VisualMap
     name: str
     x: int
     y: int
@@ -19,6 +21,7 @@ class GUIMap():
 
     def __init__(self, map_data, x_in, y_in, w_in, h):
         self.map_data = map_data
+        self.visual_map = VisualMap(self.map_data)
         self.name = self.map_data.name
         self.x_in = x_in
         self.y_in = y_in
