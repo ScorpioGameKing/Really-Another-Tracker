@@ -46,12 +46,16 @@ class GUIMap():
         self.center_location = Rectangle(self.panel_location.x + 100, 
             self.panel_location.y + 25, 100, 20)
 
-    def render(self):
+    def render(self, render_queue):
         self.label = gui_panel(self.panel_location, self.name)
         self.enable_check_box = gui_check_box(self.check_location, 
             "Enabled", 
             self.map_enabled)
         self.center_on_button = gui_button(self.center_location, 
             "Center On Map")
-
+        visible_map = self.visual_map.can_render(self.map_enabled[0])
+        if not visible_map == None:
+            render_queue.append(visible_map)
+        return render_queue
+        
     

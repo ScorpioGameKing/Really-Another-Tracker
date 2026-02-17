@@ -27,12 +27,14 @@ class Window():
     camera: Camera
     mouse_controls: MouseController
     gui: GUIManager
+    render_queue: list
 
     def __init__(self, width, height, title, grid_scale):
         self.width = width
         self.height = height
         self.title = title
         self.grid_scale = grid_scale
+        self.render_queue = []
 
         self.gui = GUIManager()
 
@@ -63,7 +65,7 @@ class Window():
             
             # Update everything before the render
             self.gui.update()
-            self.mouse_controls.update(self.gui.interfaces)
+            self.mouse_controls.update(self.gui.interfaces, self.render_queue)
             self.camera.update(self.mouse_controls.in_gui)
 
             # Start the render loop with a blank BG
@@ -73,10 +75,14 @@ class Window():
             # Draw the 2d features here after the grid
             begin_mode_2d(self.camera.camera)
             draw_scaling_grid([self.width, self.height], 16, 0, self.grid_scale)
+            for visual_map in self.render_queue:
+                #print(visual_map.map_position.x, visual_map.map_position.y, self.camera.target[0], self.camera.target[1])
+                visual_map.render()
+                self.render_queue.pop()
             end_mode_2d()
             
             # Draw the GUI last to ensure it's on top
-            self.gui.render()
+            self.gui.render(self.render_queue)
             
             end_drawing()
         close_window()

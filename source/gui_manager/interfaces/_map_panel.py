@@ -12,12 +12,13 @@ class MapPanel(SlidingBox):
         for child in self.children:
             self.children[child].update(self.location, self.scroll)
         
-    def render(self):
+    def render(self, render_queue):
         super().render()
         begin_scissor_mode(int(self.view.x),
             int(self.view.y),
             int(self.view.width), 
             int(self.view.height))
         for child in self.children:
-            self.children[child].render()
+            visible_map = self.children[child].render(render_queue)
         end_scissor_mode()
+        return render_queue

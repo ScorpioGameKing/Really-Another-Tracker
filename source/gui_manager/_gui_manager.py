@@ -15,6 +15,6 @@ class GUIManager():
         for i in self.interfaces:
             self.interfaces[i].update()
 
-    def render(self):
+    def render(self, render_queue):
         for i in self.interfaces:
-            self.interfaces[i].render()
+            self.interfaces[i].render(render_queue)
