@@ -6,19 +6,18 @@ class MapPanel(SlidingBox):
     def __init__(self, x, y, w, h, visible):
         super().__init__("Maps", x, y, w, h, visible, "right")
     
-    def update(self):
+    def update(self, element_manager):
         super().update()
         # Does this need to be a part of base or per basis in the inheriting classes?
         for child in self.children:
-            self.children[child].update(self.location, self.scroll)
+            self.children[child].update(self.location, self.scroll, element_manager)
         
-    def render(self, render_queue):
+    def render(self):
         super().render()
         begin_scissor_mode(int(self.view.x),
             int(self.view.y),
             int(self.view.width), 
             int(self.view.height))
         for child in self.children:
-            visible_map = self.children[child].render(render_queue)
+            self.children[child].render()
         end_scissor_mode()
-        return render_queue

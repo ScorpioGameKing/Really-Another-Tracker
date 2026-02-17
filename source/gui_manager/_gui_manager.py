@@ -11,10 +11,10 @@ class GUIManager():
     def remove_interface(self, interface):
         self.interfaces.pop(interface.title)
     
-    def update(self):
+    def update(self, element_manager):
         for i in self.interfaces:
-            self.interfaces[i].update()
+            self.interfaces[i].update(element_manager)
 
-    def render(self, render_queue):
+    def render(self):
         for i in self.interfaces:
-            self.interfaces[i].render(render_queue)
+            self.interfaces[i].render()

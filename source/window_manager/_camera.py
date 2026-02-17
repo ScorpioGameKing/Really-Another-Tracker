@@ -2,8 +2,8 @@ from pyray import Camera2D, get_mouse_wheel_move, Vector2, get_mouse_position, i
 
 class Camera():
 
-    offset: tuple
-    target: tuple
+    offset: Vector2
+    target: Vector2
     zoom_min: int
     zoom_max: int
     zoom_scale: int

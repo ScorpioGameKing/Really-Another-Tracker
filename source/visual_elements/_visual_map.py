@@ -3,26 +3,26 @@ from pyray import Texture, load_texture, Vector2, draw_texture_v, WHITE, get_mou
 class VisualMap():
 
     map_data: dict
+    title: str
+    visible: bool
     map_image: Texture
     map_position: Vector2
     map_location: Rectangle
 
-    def __init__(self, map_data):
+    def __init__(self, map_data, element_manager):
         self.map_data = map_data
+        self.title = map_data.name
+        self.visible = False
         self.map_image = load_texture(f"./packs/{self.map_data.image}")
         self.map_position = Vector2(1280 * 50 / 2 , 640 * 50 / 2)
         self.map_location = Rectangle(self.map_position.x, self.map_position.y,
-            self.map_position.x + self.map_image.width,
-            self.map_position.y + self.map_image.height)
+            self.map_image.width,
+            self.map_image.height)
+        element_manager.add_element(self)
         print(self.map_location.x, self.map_location.y, self.map_location.width, self.map_location.height)
     
-    def can_render(self, visible):
-        #print(visible)
-        if visible:
-            return self
-        else: return None
-    
     def render(self):
-        draw_texture_v(self.map_image, self.map_position, WHITE)
+        if self.visible:
+            draw_texture_v(self.map_image, self.map_position, WHITE)
 
         

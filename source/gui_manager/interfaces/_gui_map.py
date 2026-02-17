@@ -19,9 +19,9 @@ class GUIMap():
     enable_check_box: gui_check_box
     center_on_button: gui_button
 
-    def __init__(self, map_data, x_in, y_in, w_in, h):
+    def __init__(self, map_data, x_in, y_in, w_in, h, element_manager):
         self.map_data = map_data
-        self.visual_map = VisualMap(self.map_data)
+        self.visual_map = VisualMap(self.map_data, element_manager)
         self.name = self.map_data.name
         self.x_in = x_in
         self.y_in = y_in
@@ -36,7 +36,7 @@ class GUIMap():
         self.map_enabled = ffi.new('bool *', False)
         #print(f"Created GUIMap: {self.name}")
     
-    def update(self, parent_location, scroll):
+    def update(self, parent_location, scroll, element_manager):
         self.panel_location = Rectangle(parent_location.x + self.x_in + scroll.x,
             parent_location.y + self.y_in + scroll.y, 
             parent_location.width - self.w_in,
@@ -45,17 +45,13 @@ class GUIMap():
             self.panel_location.y + 25, 20, 20)
         self.center_location = Rectangle(self.panel_location.x + 100, 
             self.panel_location.y + 25, 100, 20)
+        element_manager.elements[self.name].visible = self.map_enabled[0]
 
-    def render(self, render_queue):
+    def render(self):
         self.label = gui_panel(self.panel_location, self.name)
         self.enable_check_box = gui_check_box(self.check_location, 
             "Enabled", 
             self.map_enabled)
         self.center_on_button = gui_button(self.center_location, 
             "Center On Map")
-        visible_map = self.visual_map.can_render(self.map_enabled[0])
-        if not visible_map == None:
-            render_queue.append(visible_map)
-        return render_queue
-        
     

@@ -1,4 +1,4 @@
-from pyray import check_collision_point_rec, get_mouse_position
+from pyray import check_collision_point_rec, get_mouse_position, Vector2
 
 class MouseController():
 
@@ -8,8 +8,11 @@ class MouseController():
     def __init__(self):
         self.in_gui = False
 
-    def update(self, gui_interfaces, visual_elements):
+    def update(self, gui_interfaces, visual_elements, camera):
         mouse_position = get_mouse_position()
+        world_position = Vector2(
+            mouse_position.x + camera.camera.target.x - camera.camera.offset.x,
+            mouse_position.y + camera.camera.target.y - camera.camera.offset.y)
         for interface in gui_interfaces:
             self.in_gui = check_collision_point_rec(
                 mouse_position, 
@@ -17,8 +20,10 @@ class MouseController():
             if self.in_gui:
                 break
         for element in visual_elements:
-            print(mouse_position.x, mouse_position.y, element.map_location.x, element.map_location.y)
+            print(world_position.x, world_position.y, "|", 
+                camera.camera.zoom, "|", 
+                visual_elements[element].map_location.x, visual_elements[element].map_location.y, 
+                visual_elements[element].map_location.width, visual_elements[element].map_location.height)
             print(check_collision_point_rec(
-                mouse_position, 
-                element.map_location))
-        
+                world_position, 
+                visual_elements[element].map_location))
