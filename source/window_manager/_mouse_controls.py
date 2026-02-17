@@ -22,6 +22,7 @@ class MouseController():
                 gui_interfaces[interface].location)
             if self.in_gui:
                 break
+        
         for element in visual_elements:
             hovering = check_collision_point_rec(
                 world_position, 
