@@ -47,6 +47,7 @@ class Camera():
             self.mouse_previous = get_mouse_position()
         
         self.camera_corner = Vector2(self.camera.target.x - (self.camera.offset.x / self.camera.zoom), self.camera.target.y - (self.camera.offset.y / self.camera.zoom))
-        
+    
+    # For debug reasons, can remove later
     def render(self):
         draw_circle(int(self.camera_corner.x), int(self.camera_corner.y), 20.0, BLUE)
