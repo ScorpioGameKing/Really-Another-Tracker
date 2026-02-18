@@ -5,7 +5,7 @@ class Map():
     name: str
     image: str
     rules: list
-    locations: dict[Location]
+    locations: dict
     position: Vector2
 
     def __init__(self, yaml_data):

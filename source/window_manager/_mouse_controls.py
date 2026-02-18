@@ -27,16 +27,11 @@ class MouseController():
             hovering = check_collision_point_rec(
                 world_position, 
                 visual_elements[element].map_location)
-            if hovering:
+            if hovering and visual_elements[element].visible:
                 if is_mouse_button_pressed(0):
                     self.mouse_previous = get_mouse_position()
                 if is_mouse_button_down(0):
-                    visual_elements[element].map_position = Vector2(
-                        visual_elements[element].map_position.x - ((self.mouse_previous.x - get_mouse_position().x) / camera.camera.zoom),
-                        visual_elements[element].map_position.y - ((self.mouse_previous.y - get_mouse_position().y) / camera.camera.zoom))
-                    visual_elements[element].map_location = Rectangle(visual_elements[element].map_position.x, visual_elements[element].map_position.y,
-                    visual_elements[element].map_image.width,
-                    visual_elements[element].map_image.height)
+                    visual_elements[element].update_postion(self.mouse_previous, get_mouse_position(), camera.camera.zoom)
                     self.mouse_previous = get_mouse_position()
     
     # For debug reasons, can remove later
