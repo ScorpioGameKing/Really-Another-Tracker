@@ -68,6 +68,7 @@ class Window():
             self.gui.update(self.elements_manager)
             self.mouse_controls.update(self.gui.interfaces, self.elements_manager.elements, self.camera)
             self.camera.update(self.mouse_controls.in_gui)
+            self.elements_manager.update()
 
             # Start the render loop with a blank BG
             begin_drawing()

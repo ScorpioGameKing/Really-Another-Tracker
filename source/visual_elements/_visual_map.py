@@ -34,9 +34,15 @@ class VisualMap():
         self.map_location = Rectangle(self.map_position.x, self.map_position.y,
             self.map_image.width,
             self.map_image.height)
+    
+    def update(self):
+        for location in self.locations:
+            self.locations[location].update(self.map_position)
 
     def render(self):
         if self.visible:
             draw_texture_v(self.map_image, self.map_position, WHITE)
+            for location in self.locations:
+                self.locations[location].render() 
 
         

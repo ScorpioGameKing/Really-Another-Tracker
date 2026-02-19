@@ -24,10 +24,16 @@ class MouseController():
                 break
         
         for element in visual_elements:
-            hovering = check_collision_point_rec(
+            hovering_map = check_collision_point_rec(
                 world_position, 
                 visual_elements[element].map_location)
-            if hovering and visual_elements[element].visible:
+            if hovering_map and visual_elements[element].visible:
+                for location in visual_elements[element].locations:
+                    hovering_location = check_collision_point_rec(
+                        world_position, 
+                        visual_elements[element].locations[location].position)
+                    if hovering_location:
+                        print(location)
                 if is_mouse_button_pressed(0):
                     self.mouse_previous = get_mouse_position()
                 if is_mouse_button_down(0):
