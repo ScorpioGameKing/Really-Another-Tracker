@@ -12,7 +12,6 @@ class YAMLLoader():
         self.built_maps = {}
 
     def load_map_yaml(self, path:str):
-        #print(f"Loading Pack YAML from {path}")
         with open(path) as yaml_map:
             map_data = safe_load(yaml_map)
         

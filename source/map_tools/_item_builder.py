@@ -12,4 +12,3 @@ class Item():
     def __init__(self, item_data):
         self.name = item_data["name"]
         self.rules = item_data["rules"]
-        #print("Created ITEM:", self.name)

@@ -28,7 +28,6 @@ class Window():
     mouse_controls: MouseController
     gui: GUIManager
     elements_manager: ElementManager
-    render_queue: list
 
     def __init__(self, width, height, title, grid_scale):
         self.width = width
@@ -36,15 +35,17 @@ class Window():
         self.title = title
         self.grid_scale = grid_scale
 
+        # Manager classes to simpliy GUI, 2D Element and mouse controls
         self.gui = GUIManager()
         self.elements_manager = ElementManager()
+        self.mouse_controls = MouseController()
 
+        # Custom camera class, will refactor to Camera2D extension
         self.camera = Camera(
             Vector2(self.width / 2, self.height / 2),
             Vector2(self.width * self.grid_scale / 2, self.height * self.grid_scale / 2),
             0, 12, 1, 0.125, 3.0)
         
-        self.mouse_controls = MouseController()
 
     def create_window(self):
         # Make the window resizeable BEFORE creation
@@ -52,11 +53,11 @@ class Window():
         init_window(self.width, self.height, self.title)
 
         # TODO: Add a more dynamic method of adding and removing interfaces
-        # Add the GUI interfaces once and update/render in main
         
-        #self.gui.add_interface(SlidingBox("Maps", 20, 72, 240, 540, True, "right"))
+        # Add the GUI interfaces once and update/render in main
         self.gui.add_interface(MapPanel(20, 72, 260, 540, True))
 
+    # Used to fill a map panel with a pack's map, should be moved
     def update_maps_panel(self, built_maps):
         for built_map in built_maps:
             self.gui.interfaces["Maps"].add_child(built_maps[built_map])

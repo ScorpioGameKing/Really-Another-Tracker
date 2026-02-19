@@ -19,4 +19,3 @@ class Location():
         self.rules = location_data["rules"]
         self.items = iterate_items(location_data["items"])
         self.position = Vector2(location_data["position"]["x"], location_data["position"]["y"])
-        #print("Created LOCATION:", self.name)

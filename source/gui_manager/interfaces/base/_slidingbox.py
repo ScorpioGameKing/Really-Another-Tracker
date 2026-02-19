@@ -30,7 +30,6 @@ class SlidingBox():
         self.scroll = Vector2(0,0)
         self.view = Rectangle(0,0,0,0)
         self.children = {}
-        #self.panel = gui_panel(self.location, self.title)
         self.panel = gui_scroll_panel(self.location, self.title, self.content, self.scroll, self.view)
 
     def add_child(self, child):
@@ -51,5 +50,4 @@ class SlidingBox():
                 print("Slide from bottom")
 
     def render(self):
-        #self.panel = gui_panel(self.location, self.title)
         self.panel = gui_scroll_panel(self.location, self.title, self.content, self.scroll, self.view)

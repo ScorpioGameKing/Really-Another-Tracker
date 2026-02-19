@@ -22,11 +22,9 @@ class VisualMap():
             self.map_image.height)
         self.locations = {}
         for location in self.map_data.locations:
-            #print(location)
             self.locations.update({location:VisualLocation(self.map_data.locations[location])})
         element_manager.add_element(self)
-        #print(self.map_location.x, self.map_location.y, self.map_location.width, self.map_location.height)
-    
+  
     def update_postion(self, mouse_previous, mouse_current, camera_zoom):
         self.map_position = Vector2(
             self.map_position.x - ((mouse_previous.x - mouse_current.x) / camera_zoom),

@@ -1,5 +1,6 @@
 from pyray import Camera2D, get_mouse_wheel_move, Vector2, get_mouse_position, is_mouse_button_down, is_mouse_button_pressed, draw_circle, BLUE
 
+# TODO: Refactor to inherit Camera2D instead of holding one to simplify code
 class Camera():
 
     offset: Vector2
@@ -21,16 +22,24 @@ class Camera():
         self.zoom_scale_min = zscalemin
         self.camera = Camera2D(self.offset, self.target, 0.0, zstart)
         self.mouse_previous = Vector2(0.0, 0.0)
+
+        # Determin the camera corner to simplify relative world space math
         self.camera_corner = Vector2(self.target.x - (self.offset.x / zstart), self.target.y - (self.offset.y / zstart))
     
     def update(self, in_gui):
+
+        # When the mouse is not in a GUI Interface we can zoom in and out between our min and max values
         if not in_gui:
+
+            # Zooming out to max zoom value, larger steps after 1
             if get_mouse_wheel_move() > 0:
                 if self.zoom_scale != 1:
                     self.camera.zoom += self.zoom_scale
                     self.zoom_scale *= 2
                 elif self.camera.zoom - self.zoom_scale < self.zoom_max:
                     self.camera.zoom += self.zoom_scale
+            
+            # Zooming in to minimum value, smaller steps after 1
             elif get_mouse_wheel_move() < 0:
                 if self.camera.zoom - self.zoom_scale > self.zoom_min:
                     self.camera.zoom -= self.zoom_scale
@@ -38,14 +47,18 @@ class Camera():
                     self.zoom_scale = self.zoom_scale / 2
                     self.camera.zoom -= self.zoom_scale
         
+        # When pressing the Middle Mouse button store the current position
         if is_mouse_button_pressed(2):
             self.mouse_previous = get_mouse_position()
+
+        # While holding the Middle Mouse update the position based on the difference of previous and current while scaled to zoom
         if is_mouse_button_down(2):
             self.camera.target = Vector2(
                 self.camera.target.x + ((self.mouse_previous.x - get_mouse_position().x) / self.camera.zoom),
                 self.camera.target.y + ((self.mouse_previous.y - get_mouse_position().y) / self.camera.zoom))
             self.mouse_previous = get_mouse_position()
         
+        # Update the camera corner
         self.camera_corner = Vector2(self.camera.target.x - (self.camera.offset.x / self.camera.zoom), self.camera.target.y - (self.camera.offset.y / self.camera.zoom))
     
     # For debug reasons, can remove later
