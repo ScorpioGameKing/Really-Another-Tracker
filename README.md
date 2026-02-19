@@ -20,10 +20,10 @@ ___
 
 ## $\color{goldenrod}{\textsf{Planned\ Features}}$
 
-- [ ] $\color{skyblue}{Zoom,\ pan\ and\ infinte\ Grid\ for\ placing\ maps}$
-- [ ] $\color{skyblue}{Drag\ to\ place\ and\ move\ maps}$
-- [ ] $\color{skyblue}{Sliding\ windows\ for\ item\ tracker,\ available\ maps,\ etc}$
-- [ ] $\color{skyblue}{YAML\ based\ pack\ creation\ and\ loading}$
+- [-] $\color{skyblue}{Zoom,\ pan\ and\ infinte\ Grid\ for\ placing\ maps}$
+- [x] $\color{skyblue}{Drag\ to\ place\ and\ move\ maps}$
+- [-] $\color{skyblue}{Sliding\ windows\ for\ item\ tracker,\ available\ maps,\ etc}$
+- [-] $\color{skyblue}{YAML\ based\ pack\ creation\ and\ loading}$
 - [ ] $\color{skyblue}{Entrance/Exit\ Linking}$
 - [ ] $\color{skyblue}{Item\ Tracking}$
 - [ ] $\color{skyblue}{Custom\ Logic\ Rules}$
