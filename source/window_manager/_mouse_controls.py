@@ -45,7 +45,9 @@ class MouseController():
                         world_position, 
                         visual_elements[element].locations[location].position)
                     if hovering_location:
-                        print(location)
+                        visual_elements[element].locations[location].hovering = True
+                    else:
+                        visual_elements[element].locations[location].hovering = False
                 
                 # When we first press the mouse, save the current position
                 if is_mouse_button_pressed(0):
