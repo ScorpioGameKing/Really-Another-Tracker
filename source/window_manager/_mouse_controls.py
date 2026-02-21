@@ -46,6 +46,8 @@ class MouseController():
                         visual_elements[element].locations[location].position)
                     if hovering_location:
                         visual_elements[element].locations[location].hovering = True
+                        if is_mouse_button_pressed(0):
+                            gui_interfaces["Location"].name = location
                     else:
                         visual_elements[element].locations[location].hovering = False
                 

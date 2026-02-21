@@ -4,6 +4,7 @@ class SlidingBox():
 
     title: str
     min_x: int
+    min_y: int
     x: int
     y: int
     w: int
@@ -16,17 +17,18 @@ class SlidingBox():
     panel: gui_panel
     children: dict
 
-    def __init__(self, title, x, y, w, h, visible, slide_direction):
+    def __init__(self, title, x, y, w, h, scroll_multiplier, visible, slide_direction):
         self.title = title
         self.x = x
         self.y = y
         self.w = w
         self.h = h
         self.min_x = 0 - self.x - self.w
+        self.min_y = 640 + self.h + 20
         self.visible = visible
         self.slide_direction = slide_direction
         self.location = Rectangle(self.min_x, self.y, self.w, self.h)
-        self.content = Rectangle(0, 0, self.w, self.h*2)
+        self.content = Rectangle(0, 0, self.w, self.h * scroll_multiplier)
         self.scroll = Vector2(0,0)
         self.view = Rectangle(0,0,0,0)
         self.children = {}
@@ -46,8 +48,11 @@ class SlidingBox():
                 print("Slide from left")
             case "top":
                 print("Slide from top")
-            case "Bottom":
-                print("Slide from bottom")
+            case "bottom":
+                if self.visible and self.location.y != self.y:
+                    self.location.y -= 1
+                elif not self.visible and self.location.y != self.min_y:
+                    self.location.y += 1
 
     def render(self):
         self.panel = gui_scroll_panel(self.location, self.title, self.content, self.scroll, self.view)
