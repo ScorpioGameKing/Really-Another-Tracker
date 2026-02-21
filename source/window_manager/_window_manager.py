@@ -56,7 +56,7 @@ class Window():
         
         # Add the GUI interfaces once and update/render in main
         self.gui.add_interface(MapPanel(20, 72, 260, 540, True))
-        self.gui.add_interface(LocationPanel(300, self.height - 148, 640, 120, True))
+        self.gui.add_interface(LocationPanel(300, self.height - 180, 860, 152, True))
 
     # Used to fill a map panel with a pack's map, should be moved
     def update_maps_panel(self, built_maps):

@@ -19,6 +19,7 @@ class LocationPanel(SlidingBox):
     def update(self, element_manager):
         super().update()
         for item in self.children:
+            print(item)
             self.children[item].update(self.location, self.scroll)
         #print("Updating Location Panel")
         

@@ -39,12 +39,18 @@ class GUIMap():
         self.location_items = {}
         for location in self.map_data.locations:
             #print(location)
+            items = {}
+            item_offset = 0
             for item in self.map_data.locations[location].items:
                 #print(item)
-                self.location_items.update({
-                    location:{item:GUIItem(
-                        self.map_data.locations[location].items[item],
-                        5, 30, 5, 20)}})
+                print(45 + (50 * item_offset))
+                items.update({item:GUIItem(
+                    self.map_data.locations[location].items[item],
+                    5, 45 + (50 * item_offset), 20, 20)})
+                item_offset += 1
+                #print(item)
+            self.location_items.update({
+                location:items})
     
     def update(self, parent_location, scroll, element_manager):
         self.panel_location = Rectangle(parent_location.x + self.x_in + scroll.x,
