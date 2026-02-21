@@ -48,6 +48,8 @@ class MouseController():
                         visual_elements[element].locations[location].hovering = True
                         if is_mouse_button_pressed(0):
                             gui_interfaces["Location"].name = location
+                            gui_interfaces["Location"].update_display(
+                                gui_interfaces["Maps"].children[visual_elements[element].title].location_items[location])
                     else:
                         visual_elements[element].locations[location].hovering = False
                 

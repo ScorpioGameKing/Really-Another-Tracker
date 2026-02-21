@@ -1,6 +1,7 @@
 def iterate_items(item_data):
-    items = dict[Item]
+    items = {}
     for item in item_data:
+        #print(item_data[item]["name"])
         items.update({item_data[item]["name"]:Item(item_data[item])})
     return items
 

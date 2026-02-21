@@ -11,7 +11,7 @@ class Location():
 
     name: str
     rules: str
-    items: dict[Item]
+    items: dict
     postion: Vector2
 
     def __init__(self, location_data):

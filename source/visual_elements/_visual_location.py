@@ -3,7 +3,7 @@ from source.map_tools import Location
 
 class VisualLocation():
 
-    location_data: dict[Locations]
+    location_data: dict
     x: int
     y: int
     width: int

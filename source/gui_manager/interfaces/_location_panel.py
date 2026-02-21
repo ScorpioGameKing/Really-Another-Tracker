@@ -9,10 +9,17 @@ class LocationPanel(SlidingBox):
         super().__init__("Location", x, y, w, h, 1, visible, "bottom")
         self.location = Rectangle(self.x, self.min_y, self.w, self.h)
         self.name = "REPLACE ME"
-        print(x, y, w, h, visible, self.min_y)
+        #print(x, y, w, h, visible, self.min_y)
+    
+    def update_display(self, display_items):
+        self.children = display_items
+        for item in self.children:
+            print(item)
     
     def update(self, element_manager):
         super().update()
+        for item in self.children:
+            self.children[item].update(self.location, self.scroll)
         #print("Updating Location Panel")
         
     def render(self):
