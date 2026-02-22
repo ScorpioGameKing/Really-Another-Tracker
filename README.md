@@ -26,9 +26,9 @@ ___
 - [x] $\color{skyblue}{Drag\ and\ Drop\ maps}$
 - [ ] $\color{skyblue}{Sliding\ windows\ for\ item\ tracker,\ available\ maps,\ etc}$
     - [x] $\color{skyblue}{Sliding\ window}$
-    - [ ] $\color{skyblue}{Maps\ Window}$
+    - [x] $\color{skyblue}{Maps\ Window}$
     - [ ] $\color{skyblue}{Item\ Window}$
-    - [ ] $\color{skyblue}{Location\ Window}$
+    - [x] $\color{skyblue}{Location\ Window}$
     - [ ] $\color{skyblue}{Settings\ Window}$
 - [ ] $\color{skyblue}{YAML\ based\ pack\ creation\ and\ loading}$
 - [ ] $\color{skyblue}{Entrance/Exit\ Linking}$
