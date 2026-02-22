@@ -27,10 +27,10 @@ class GUIItem():
         self.panel_location = Rectangle(self.x_in, self.y_in, self.w_in, self.h)
         self.check_location = Rectangle(self.panel_location.x + 5, 
             self.panel_location.y + 25, 20, 20)
-        self.center_location = Rectangle(self.panel_location.x + 100, 
-            self.panel_location.y + 25, 100, 20)
+        self.center_location = Rectangle(self.panel_location.x + 120, 
+            self.panel_location.y + 25, 150, 20)
         self.label = gui_panel(self.panel_location, self.name)
-        self.item_found = ffi.new('bool *', False)
+        self.item_found = ffi.new('bool *', False)        
     
     def update(self, parent_location, scroll):
         self.panel_location = Rectangle(parent_location.x + self.x_in + scroll.x,
@@ -40,7 +40,7 @@ class GUIItem():
         self.check_location = Rectangle(self.panel_location.x + 5, 
             self.panel_location.y + 25, 20, 20)
         self.center_location = Rectangle(self.panel_location.x + 100, 
-            self.panel_location.y + 25, 100, 20)
+            self.panel_location.y + 25, 150, 20)
 
     def render(self):
         self.label = gui_panel(self.panel_location, self.name)

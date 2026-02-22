@@ -1,4 +1,4 @@
-from pyray import draw_rectangle, GREEN, Rectangle, draw_text, BLACK, Color, WHITE
+from pyray import draw_rectangle, GREEN, ORANGE, RED, GRAY, Rectangle, draw_text, BLACK, Color, WHITE
 from source.map_tools import Location
 
 class VisualLocation():
@@ -10,6 +10,8 @@ class VisualLocation():
     height: int
     position: Rectangle
     hovering: bool
+    state: str
+    state_color: Color
 
     def __init__(self, location_data):
         self.location_data = location_data
@@ -19,6 +21,9 @@ class VisualLocation():
         self.y = int(self.location_data.position.y - self.height / 2)
         self.position = Rectangle(self.x, self.y, self.width, self.height)
         self.hovering = False
+    
+    def update_state(self, panel):
+        print(panel)
         
     def update(self, parent_position):
         self.x = int(self.location_data.position.x + parent_position.x - self.width / 2)
