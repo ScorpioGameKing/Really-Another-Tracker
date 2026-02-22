@@ -28,11 +28,14 @@ class SlidingBox():
         self.visible = visible
         self.slide_direction = slide_direction
         self.location = Rectangle(self.min_x, self.y, self.w, self.h)
-        self.content = Rectangle(0, 0, self.w, self.h * scroll_multiplier)
+        self.content = Rectangle(0, 0, self.w * 0.9, self.h * scroll_multiplier)
         self.scroll = Vector2(0,0)
         self.view = Rectangle(0,0,0,0)
         self.children = {}
         self.panel = gui_scroll_panel(self.location, self.title, self.content, self.scroll, self.view)
+    
+    def resize_content(self, width, width_percent, height, height_percent):
+        self.content = Rectangle(0, 0, width * width_percent, height * height_percent)
 
     def add_child(self, child):
         self.children.update({child.name:child})

@@ -6,13 +6,18 @@ class LocationPanel(SlidingBox):
     name: str
 
     def __init__(self, x, y, w, h, visible):
-        super().__init__("Location", x, y, w, h, 1, visible, "bottom")
+        super().__init__("Location", x, y, w, h, 0.70, visible, "bottom")
         self.location = Rectangle(self.x, self.min_y, self.w, self.h)
         self.name = "REPLACE ME"
+        self.resize_content(self.w, 0.99, self.h, 0.70)
         #print(x, y, w, h, visible, self.min_y)
     
     def update_display(self, display_items):
         self.children = display_items
+        if len(self.children) > 1:
+            self.resize_content(self.w, 0.99, self.h, (0.4 * len(self.children)))
+        else:
+            self.resize_content(self.w, 0.99, self.h, 0.5)
         for item in self.children:
             print(item)
     

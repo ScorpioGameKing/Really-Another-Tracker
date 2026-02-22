@@ -4,7 +4,7 @@ from source.gui_manager.interfaces.base import SlidingBox
 class MapPanel(SlidingBox):
 
     def __init__(self, x, y, w, h, visible):
-        super().__init__("Maps", x, y, w, h, 2, visible, "right")
+        super().__init__("Maps", x, y, w, h, 0.7, visible, "right")
         self.location = Rectangle(self.min_x, self.y, self.w, self.h)
     
     def update(self, element_manager):
