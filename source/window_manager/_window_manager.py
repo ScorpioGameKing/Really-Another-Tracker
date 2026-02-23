@@ -70,7 +70,7 @@ class Window():
             self.gui.update(self.elements_manager)
             self.mouse_controls.update(self.gui.interfaces, self.elements_manager.elements, self.camera)
             self.camera.update(self.mouse_controls.in_gui)
-            self.elements_manager.update()
+            self.elements_manager.update(self.gui)
 
             # Start the render loop with a blank BG
             begin_drawing()
@@ -80,8 +80,8 @@ class Window():
             begin_mode_2d(self.camera.camera)
             draw_scaling_grid([self.width, self.height], 16, 0, self.grid_scale)
             self.elements_manager.render()
-            self.camera.render()
-            self.mouse_controls.render(self.camera)
+            #self.camera.render()
+            #self.mouse_controls.render(self.camera)
             end_mode_2d()
             
             # Draw the GUI last to ensure it's on top

@@ -11,9 +11,9 @@ class ElementManager():
     def remove_element(self, element):
         self.elements.pop(element.title)
     
-    def update(self):
+    def update(self, gui):
         for i in self.elements:
-            self.elements[i].update()
+            self.elements[i].update(gui)
 
     def render(self):
         for i in self.elements:

@@ -33,9 +33,9 @@ class VisualMap():
             self.map_image.width,
             self.map_image.height)
     
-    def update(self):
+    def update(self, gui):
         for location in self.locations:
-            self.locations[location].update(self.map_position)
+            self.locations[location].update(self.map_position, gui.interfaces["Location"])
 
     def render(self):
         if self.visible:

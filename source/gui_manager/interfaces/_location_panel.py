@@ -23,7 +23,8 @@ class LocationPanel(SlidingBox):
         else:
             self.resize_content(self.w, 0.99, self.h, 0.5)
         for item in self.children:
-            print(item)
+            #print(item)
+            pass
     
     def update(self, element_manager):
         super().update()
@@ -32,10 +33,12 @@ class LocationPanel(SlidingBox):
             self.children[item].update(self.location, self.scroll)
             if self.children[item].item_found[0]: 
                 self.active_checks -= 1
-        if self.active_checks == 0:
-            print("ALL CHECKS")
+        if self.active_checks == len(self.children):
+            self.state = "FULL"
+        elif self.active_checks == 0:
+            self.state = "COMPLETE"
         else:
-            print("PARTIAL CHECKS", self.active_checks)
+            self.state = "PARTIAL"
         #print("Updating Location Panel")
         
     def render(self):
