@@ -23,9 +23,9 @@ class VisualLocation():
         self.hovering = False
         self.state_color = GREEN
     
-    def update_state(self, gui):
-        if self.location_data.name == gui.name:
-            self.state = gui.state
+    def update_state(self, location_panel):
+        if self.location_data.name == location_panel.name:
+            self.state = location_panel.state
             match self.state:
                 case "FULL":
                     self.state_color = GREEN

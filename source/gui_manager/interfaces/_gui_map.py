@@ -38,17 +38,13 @@ class GUIMap():
         self.map_enabled = ffi.new('bool *', False)
         self.location_items = {}
         for location in self.map_data.locations:
-            #print(location)
             items = {}
             item_offset = 0
             for item in self.map_data.locations[location].items:
-                #print(item)
-                print(45 + (50 * item_offset))
                 items.update({item:GUIItem(
                     self.map_data.locations[location].items[item],
                     5, 45 + (50 * item_offset), 20, 20)})
                 item_offset += 1
-                #print(item)
             self.location_items.update({
                 location:items})
     

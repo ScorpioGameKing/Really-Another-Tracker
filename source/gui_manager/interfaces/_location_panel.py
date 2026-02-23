@@ -22,12 +22,12 @@ class LocationPanel(SlidingBox):
             self.resize_content(self.w, 0.99, self.h, (0.4 * len(self.children)))
         else:
             self.resize_content(self.w, 0.99, self.h, 0.5)
-        for item in self.children:
-            #print(item)
-            pass
     
     def update(self, element_manager):
         super().update()
+
+        # Update the currently selected location's state based on the count of active checks
+        # to later update a VisualLocation
         self.active_checks = len(self.children)
         for item in self.children:
             self.children[item].update(self.location, self.scroll)
@@ -39,7 +39,6 @@ class LocationPanel(SlidingBox):
             self.state = "COMPLETE"
         else:
             self.state = "PARTIAL"
-        #print("Updating Location Panel")
         
     def render(self):
         super().render()

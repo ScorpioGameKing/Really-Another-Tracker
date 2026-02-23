@@ -25,6 +25,7 @@ class VisualMap():
             self.locations.update({location:VisualLocation(self.map_data.locations[location])})
         element_manager.add_element(self)
   
+    # Used to update the map's position in worldspace
     def update_postion(self, mouse_previous, mouse_current, camera_zoom):
         self.map_position = Vector2(
             self.map_position.x - ((mouse_previous.x - mouse_current.x) / camera_zoom),
@@ -34,6 +35,8 @@ class VisualMap():
             self.map_image.height)
     
     def update(self, gui):
+
+        # Pass the map location for relational positioning and the location panel for location updates
         for location in self.locations:
             self.locations[location].update(self.map_position, gui.interfaces["Location"])
 

@@ -40,12 +40,14 @@ class MouseController():
                 # Iterate locations first to see if there's any UI Updates to pass on
                 for location in visual_elements[element].locations:
                     
-                    # Before drag and drop, check if we're over a location to update the location menu
+                    # Before drag and drop, check if we're over a location to update the current location hover
                     hovering_location = check_collision_point_rec(
                         world_position, 
                         visual_elements[element].locations[location].position)
                     if hovering_location:
                         visual_elements[element].locations[location].hovering = True
+
+                        # If clicked update the location menu's active display
                         if is_mouse_button_pressed(0):
                             gui_interfaces["Location"].name = location
                             gui_interfaces["Location"].update_display(
