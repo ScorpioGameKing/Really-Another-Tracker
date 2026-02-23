@@ -62,6 +62,7 @@ class Window():
     def update_maps_panel(self, built_maps):
         for built_map in built_maps:
             self.gui.interfaces["Maps"].add_child(built_maps[built_map])
+        self.gui.interfaces["Maps"].update_display()
 
     def main_loop(self):
         while not window_should_close():

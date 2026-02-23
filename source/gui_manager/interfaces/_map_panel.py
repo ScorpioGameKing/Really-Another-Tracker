@@ -7,6 +7,17 @@ class MapPanel(SlidingBox):
         super().__init__("Maps", x, y, w, h, 0.7, visible, "right")
         self.location = Rectangle(self.min_x, self.y, self.w, self.h)
     
+    def update_display(self):
+        panel_offset = 0
+        if len(self.children) > 1:
+            for mp in self.children:
+                panel_y_location = 50 * panel_offset
+                self.children[mp].update_panel(panel_y_location)
+                panel_offset += 1
+            self.resize_content(self.w, 0.99, self.h, (0.4 * len(self.children)))
+        else:
+            self.resize_content(self.w, 0.99, self.h, 0.5)
+    
     def update(self, element_manager):
         super().update()
         # Does this need to be a part of base or per basis in the inheriting classes?

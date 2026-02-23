@@ -36,6 +36,7 @@ class SlidingBox():
     
     def resize_content(self, width, width_percent, height, height_percent):
         self.content = Rectangle(0, 0, width * width_percent, height * height_percent)
+        print(self.content.height)
 
     def add_child(self, child):
         self.children.update({child.name:child})

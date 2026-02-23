@@ -12,6 +12,7 @@ class GUIMap():
     y: int
     w: int
     h: int
+    panel_y_location: int
     panel_location: Rectangle
     check_location: Rectangle
     center_location: Rectangle
@@ -48,9 +49,12 @@ class GUIMap():
             self.location_items.update({
                 location:items})
     
+    def update_panel(self, panel_y_location):
+        self.panel_y_location = panel_y_location
+    
     def update(self, parent_location, scroll, element_manager):
         self.panel_location = Rectangle(parent_location.x + self.x_in + scroll.x,
-            parent_location.y + self.y_in + scroll.y, 
+            parent_location.y + self.y_in + scroll.y + self.panel_y_location, 
             parent_location.width - self.w_in,
             self.h)
         self.check_location = Rectangle(self.panel_location.x + 5, 

@@ -29,16 +29,16 @@ class VisualLocation():
             match self.state:
                 case "FULL":
                     self.state_color = GREEN
-                    print("Set to GREEN")
+                    #print("Set to GREEN")
                 case "PARTIAL":
                     self.state_color = ORANGE
-                    print("Set to ORANGE")
+                    #print("Set to ORANGE")
                 case "COMPLETE":
                     self.state_color = GRAY
-                    print("Set to GRAY")
+                    #print("Set to GRAY")
                 case _:
                     self.state_color = RED
-                    print("Set to RED")
+                    #print("Set to RED")
         
     def update(self, parent_position, gui):
         self.update_state(gui)
