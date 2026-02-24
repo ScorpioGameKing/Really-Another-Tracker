@@ -9,7 +9,11 @@ from pyray import (
     end_drawing,
     close_window,
     begin_mode_2d,
-    end_mode_2d, Vector2
+    end_mode_2d, 
+    Vector2,
+    set_window_icon,
+    set_window_monitor, 
+    load_image
 )
 
 from source.visual_elements import draw_scaling_grid, ElementManager
@@ -51,6 +55,8 @@ class Window():
         # Make the window resizeable BEFORE creation
         set_config_flags(FLAG_WINDOW_RESIZABLE)
         init_window(self.width, self.height, self.title)
+        set_window_icon(load_image("./source/assets/images/RATLogoV2.png"))
+        set_window_monitor(0)
 
         # TODO: Add a more dynamic method of adding and removing interfaces
         
@@ -79,7 +85,7 @@ class Window():
             
             # Draw the 2d features here after the grid
             begin_mode_2d(self.camera.camera)
-            draw_scaling_grid([self.width, self.height], 16, 0, self.grid_scale)
+            draw_scaling_grid([self.width, self.height], 64, 0, self.grid_scale)
             self.elements_manager.render()
             #self.camera.render()
             #self.mouse_controls.render(self.camera)

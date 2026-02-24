@@ -5,10 +5,12 @@ class MouseController():
     in_gui: bool
     on_element: bool
     mouse_previous: Vector2
+    grabbed_element:str
 
     def __init__(self):
         self.in_gui = False
         self.mouse_previous = Vector2(0.0, 0.0)
+        self.grabbed_element = ""
 
     def update(self, gui_interfaces, visual_elements, camera):
 
@@ -27,7 +29,7 @@ class MouseController():
                 break
         
         # Iterate through the 2D Elements to do a lot
-        for element in visual_elements:
+        for element in dict(reversed(visual_elements.items())):
 
             # See if we're on a map to enable drag and drop
             hovering_map = check_collision_point_rec(
@@ -55,13 +57,14 @@ class MouseController():
                     else:
                         visual_elements[element].locations[location].hovering = False
                 
-                # When we first press the mouse, save the current position
+                # When we first press the mouse, save the current position and grabbed element
                 if is_mouse_button_pressed(0):
                     self.mouse_previous = get_mouse_position()
+                    self.grabbed_element = visual_elements[element].title
                 
                 # While we're holding the mouse button down, pass the current, previous and camera zoom to
                 # move the element's position scaled properly
-                if is_mouse_button_down(0):
+                if is_mouse_button_down(0) and visual_elements[element].title == self.grabbed_element:
                     visual_elements[element].update_postion(self.mouse_previous, get_mouse_position(), camera.camera.zoom)
                     self.mouse_previous = get_mouse_position()
     
