@@ -9,7 +9,7 @@ class LocationPanel(SlidingBox):
 
     def __init__(self, x, y, w, h, visible):
         super().__init__("Location", x, y, w, h, 0.70, visible, "bottom")
-        self.location = Rectangle(self.x, self.min_y, self.w, self.h)
+        self.location = Rectangle(self.x, self.max_y, self.w, self.h)
         self.name = "REPLACE ME"
         self.active_checks = len(self.children)
         self.state = "PARTIAL"

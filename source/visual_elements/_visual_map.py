@@ -1,4 +1,4 @@
-from pyray import Texture, load_texture, Vector2, draw_texture_v, WHITE, get_mouse_position, Rectangle
+from pyray import Texture, load_texture, Vector2, draw_texture_v, WHITE, get_mouse_position, Rectangle, draw_rectangle, draw_text, Color, BLACK
 from source.visual_elements._visual_location import VisualLocation
 
 class VisualMap():
@@ -10,6 +10,7 @@ class VisualMap():
     map_position: Vector2
     map_location: Rectangle
     locations: dict
+    hovering: bool
 
     def __init__(self, map_data, element_manager):
         self.map_data = map_data
@@ -20,6 +21,7 @@ class VisualMap():
         self.map_location = Rectangle(self.map_position.x, self.map_position.y,
             self.map_image.width,
             self.map_image.height)
+        self.hovering = False
         self.locations = {}
         for location in self.map_data.locations:
             self.locations.update({location:VisualLocation(self.map_data.locations[location])})
@@ -43,6 +45,19 @@ class VisualMap():
     def render(self):
         if self.visible:
             draw_texture_v(self.map_image, self.map_position, WHITE)
+            if self.hovering:
+                draw_rectangle(
+                    int(self.map_position.x + 25),
+                    int(self.map_position.y - 100), 
+                    len(self.title) * 28, 54, Color(124,124,124,186))
+                draw_text(self.title, 
+                    int(self.map_position.x + 31), 
+                    int(self.map_position.y - 99), 
+                    52, BLACK)
+                draw_text(self.title, 
+                    int(self.map_position.x + 30), 
+                    int(self.map_position.y - 100), 
+                    52, WHITE)
             for location in self.locations:
                 self.locations[location].render() 
 

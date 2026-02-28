@@ -20,7 +20,7 @@ from source.visual_elements import draw_scaling_grid, ElementManager
 from source.window_manager._camera import Camera
 from source.window_manager._mouse_controls import MouseController
 from source.gui_manager import GUIManager
-from source.gui_manager.interfaces import MapPanel, LocationPanel
+from source.gui_manager.interfaces import MapPanel, LocationPanel, ToolbarTabMenu
 
 class Window():
 
@@ -63,6 +63,7 @@ class Window():
         # Add the GUI interfaces once and update/render in main
         self.gui.add_interface(MapPanel(20, 72, 260, 540, True))
         self.gui.add_interface(LocationPanel(300, self.height - 180, 860, 152, True))
+        self.gui.add_interface(ToolbarTabMenu(0, -24, self.width, 50, "Settings", True))
 
     # Used to fill a map panel with a pack's map, should be moved
     def update_maps_panel(self, built_maps):

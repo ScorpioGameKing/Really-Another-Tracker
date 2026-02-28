@@ -26,7 +26,10 @@ class MouseController():
                 mouse_position, 
                 gui_interfaces[interface].location)
             if self.in_gui:
-                break
+                if gui_interfaces[interface].title == "Settings":
+                    #print(gui_interfaces[interface].title)
+                    pass
+                pass
         
         # Iterate through the 2D Elements to do a lot
         for element in dict(reversed(visual_elements.items())):
@@ -38,6 +41,7 @@ class MouseController():
 
             # If we're on a map and it's visible we can move it
             if hovering_map and visual_elements[element].visible:
+                visual_elements[element].hovering = True
                 
                 # Iterate locations first to see if there's any UI Updates to pass on
                 for location in visual_elements[element].locations:
@@ -67,6 +71,9 @@ class MouseController():
                 if is_mouse_button_down(0) and visual_elements[element].title == self.grabbed_element:
                     visual_elements[element].update_postion(self.mouse_previous, get_mouse_position(), camera.camera.zoom)
                     self.mouse_previous = get_mouse_position()
+                    
+            else:
+                visual_elements[element].hovering = False
     
     # For debug reasons, can remove later
     def render(self, camera):
