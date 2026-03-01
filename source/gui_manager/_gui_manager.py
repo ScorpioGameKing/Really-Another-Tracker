@@ -13,6 +13,11 @@ class GUIManager():
     
     def update(self, element_manager):
         for i in self.interfaces:
+            match i:
+                case "Maps":
+                    self.interfaces[i].visible = self.interfaces["Settings"].map_state[0]
+                case "Location":
+                    self.interfaces[i].visible = self.interfaces["Settings"].location_state[0]
             self.interfaces[i].update(element_manager)
 
     def render(self):

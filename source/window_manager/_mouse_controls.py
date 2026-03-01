@@ -30,6 +30,8 @@ class MouseController():
                     #print(gui_interfaces[interface].title)
                     pass
                 pass
+         
+        print(self.in_gui)
         
         # Iterate through the 2D Elements to do a lot
         for element in dict(reversed(visual_elements.items())):
