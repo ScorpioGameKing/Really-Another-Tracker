@@ -32,6 +32,7 @@ class MouseController():
 
         #print(self.gui_checks)
 
+        # Fix for multi-gui zoom state bug
         for gui in self.gui_checks:
             if gui == True and self.in_gui == False: 
                 self.in_gui = True

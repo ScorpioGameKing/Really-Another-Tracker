@@ -19,9 +19,14 @@ class ToolbarTabMenu(SlidingBox):
         self.pack_position = Rectangle(self.x + 5 ,self.y + 25, 80, 20)
         self.map_position = Rectangle(self.x + 90, self.y + 25, 20, 20)
         self.location_position = Rectangle(self.x + 170, self.y + 25, 20, 20)
+        self.pack_button = gui_button(self.pack_position, "Choose Pack")
+        self.map_check = gui_check_box(self.map_position, "Map Panel", self.map_state)
+        self.location_check_check = gui_check_box(self.location_position, "Location Panel", self.location_state)
 
     def update(self, element_manager):
         super().update()
+        if self.pack_button == True:
+            print("Pressed")
 
     def render(self):
         super().render()
