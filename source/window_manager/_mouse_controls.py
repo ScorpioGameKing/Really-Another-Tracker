@@ -2,12 +2,14 @@ from pyray import check_collision_point_rec, get_mouse_position, is_mouse_button
 
 class MouseController():
 
+    gui_checks: list
     in_gui: bool
     on_element: bool
     mouse_previous: Vector2
     grabbed_element:str
 
     def __init__(self):
+        self.gui_checks = []
         self.in_gui = False
         self.mouse_previous = Vector2(0.0, 0.0)
         self.grabbed_element = ""
@@ -21,17 +23,22 @@ class MouseController():
             (mouse_position.y / camera.camera.zoom) + camera.camera_corner.y)
         
         # Iterate through the GUI Interfaces to disable zoom when over one
+        self.gui_checks = []
+        self.in_gui = False
         for interface in gui_interfaces:
-            self.in_gui = check_collision_point_rec(
+            self.gui_checks.append(check_collision_point_rec(
                 mouse_position, 
-                gui_interfaces[interface].location)
-            if self.in_gui:
-                if gui_interfaces[interface].title == "Settings":
-                    #print(gui_interfaces[interface].title)
-                    pass
-                pass
+                gui_interfaces[interface].location))
+
+        #print(self.gui_checks)
+
+        for gui in self.gui_checks:
+            if gui == True and self.in_gui == False: 
+                self.in_gui = True
+            elif self.in_gui == False: 
+                self.in_gui = False
          
-        print(self.in_gui)
+        #print(self.in_gui)
         
         # Iterate through the 2D Elements to do a lot
         for element in dict(reversed(visual_elements.items())):
