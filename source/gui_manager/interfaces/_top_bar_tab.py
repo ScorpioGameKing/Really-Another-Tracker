@@ -1,5 +1,6 @@
 from pyray import Rectangle, ffi, gui_check_box, gui_button, gui_window_box
 from source.gui_manager.interfaces.base import SlidingBox
+from source.gui_manager.interfaces._pack_window import PackWindow
 
 class ToolbarTabMenu(SlidingBox):
 
@@ -31,12 +32,13 @@ class ToolbarTabMenu(SlidingBox):
         self.pack_button = gui_button(self.pack_position, "Choose Pack")
         self.map_check = gui_check_box(self.map_position, "Map Panel", self.map_state)
         self.location_check_check = gui_check_box(self.location_position, "Location Panel", self.location_state)
-        self.pack_window = gui_window_box(self.pack_window_position, "Installed Packs")
+        self.pack_window = PackWindow(self.pack_window_position, "Installed Packs")
+        #self.pack_window = gui_window_box(self.pack_window_position, "Installed Packs")
 
     def update(self, element_manager):
         super().update()
         if self.pack_button == True or (self.pack_window == True and self.pack_window_state):
-            print("Pressed Pack button or closed window")
+            #print("Pressed Pack button or closed window")
             self.pack_window_state = not self.pack_window_state
 
     def render(self):
@@ -44,6 +46,6 @@ class ToolbarTabMenu(SlidingBox):
         self.pack_button = gui_button(self.pack_position, "Choose Pack")
         self.map_check = gui_check_box(self.map_position, "Map Panel", self.map_state)
         self.location_check_check = gui_check_box(self.location_position, "Location Panel", self.location_state)
-        if self.pack_window_state:
-            self.pack_window = gui_window_box(self.pack_window_position, "Installed Packs")
+        #if self.pack_window_state:
+        self.pack_window.render(self.pack_window_state)
         
