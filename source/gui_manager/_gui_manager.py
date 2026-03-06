@@ -18,6 +18,8 @@ class GUIManager():
                     self.interfaces[i].visible = self.interfaces["Settings"].map_state[0]
                 case "Location":
                     self.interfaces[i].visible = self.interfaces["Settings"].location_state[0]
+                case "Items":
+                    self.interfaces[i].visible = self.interfaces["Settings"].item_state[0]
             self.interfaces[i].update(element_manager)
 
     def render(self):

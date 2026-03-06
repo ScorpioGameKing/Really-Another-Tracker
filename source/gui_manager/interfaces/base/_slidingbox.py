@@ -25,10 +25,10 @@ class SlidingBox():
         self.y = y
         self.w = w
         self.h = h
-        self.min_x = 0 - self.x - self.w
-        self.min_y = 0 - self.y - self.h
-        self.max_x = 1280 + self.x + self.w
-        self.max_y = 640 + self.y + self.h
+        self.min_x = 0 - (self.x - self.w)
+        self.min_y = 0 - (self.y - self.h)
+        self.max_x = 1280 + (self.x + self.w)
+        self.max_y = 640 + (self.y + self.h)
         self.visible = visible
         self.slide_direction = slide_direction
         self.location = Rectangle(0,0,0,0)
@@ -44,11 +44,13 @@ class SlidingBox():
         print(self.content.height)
 
     def set_location(self):
+        print(self.slide_direction)
         match self.slide_direction:
             case "right":
                 self.location = Rectangle(self.min_x, self.y, self.w, self.h)
             case "left":
                 self.location = Rectangle(self.max_x, self.y, self.w, self.h)
+                print(self.location.x)
             case "top":
                 self.location = Rectangle(self.x, self.min_y, self.w, self.h)
             case "bottom":
@@ -69,6 +71,7 @@ class SlidingBox():
                     self.location.x -= 1
                 elif not self.visible and self.location.x != self.max_x:
                     self.location.x += 1
+                print(self.location.x)
             case "top":
                 if self.visible and self.location.y != self.y:
                     self.location.y += 1
