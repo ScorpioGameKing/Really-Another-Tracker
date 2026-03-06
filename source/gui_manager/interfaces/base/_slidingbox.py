@@ -25,10 +25,10 @@ class SlidingBox():
         self.y = y
         self.w = w
         self.h = h
-        self.min_x = 0 - (self.x - self.w)
-        self.min_y = 0 - (self.y - self.h)
-        self.max_x = 1280 + (self.x + self.w)
-        self.max_y = 640 + (self.y + self.h)
+        self.min_x = 0 - self.x - self.w
+        self.min_y = 0 - self.y - self.h
+        self.max_x = 1280 + self.x + self.w
+        self.max_y = 640 + self.y + self.h
         self.visible = visible
         self.slide_direction = slide_direction
         self.location = Rectangle(0,0,0,0)
